@@ -24,14 +24,14 @@ $(PROG4).o: $(PROG4).cpp
 	g++ $(FLAGS) -c $(PROG4).cpp -o $(PROG4).o
 clean:
 	rm -rf $(PROG1)
-  rm -rf $(PROG2)
-  rm -rf $(PROG3)
-  rm -rf $(PROG4)
+	rm -rf $(PROG2)
+	rm -rf $(PROG3)
+	rm -rf $(PROG4)
 	rm -rf *.o
 run: all
 	./$(PROG1) input.txt
-  ./$(PROG2) input.txt
-  ./$(PROG3) input.txt
-  ./$(PROG4) input.txt
+	./$(PROG2) input.txt
+	./$(PROG3) input.txt
+	./$(PROG4) input.txt
 memcheck: all
 	valgrind -v --leak-check=full ./$(PROG1)
