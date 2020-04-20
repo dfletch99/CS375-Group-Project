@@ -11,7 +11,7 @@ void swap (int arr[], int x, int y)
 	arr[y] = temp;
 }
 
-int parition(int arr[], int left, int right)
+int paritionRandom(int arr[], int left, int right)
 {
 	int random = rand() % (right - left + 1) + left;
 	swap(arr, random, right);
@@ -31,13 +31,13 @@ int parition(int arr[], int left, int right)
 	return low+1;
 }
 
-void quickSort(int arr[], int left, int right)
+void quickSortRandom(int arr[], int left, int right)
 {
 	if (left < right)
 	{
-		int part = parition(arr, left, right);
-		quickSort(arr, left, part-1);
-		quickSort(arr, part+1, right);
+		int part = paritionRandom(arr, left, right);
+		quickSortRandom(arr, left, part-1);
+		quickSortRandom(arr, part+1, right);
 	}
 }
 
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 	}
 	outFile << endl;
 
-	quickSort(arr, 0, numNums-1);
+	quickSortRandom(arr, 0, numNums-1);
 
 	outFile << "After Sorting:" << endl;
 	for (int b=0; b<numNums; b++)
