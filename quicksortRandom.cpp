@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <time.h>
 
 using namespace std;
 
@@ -64,6 +65,7 @@ int main(int argc, char *argv[])
 	}
 	outFile << endl;
 
+	srand(time(NULL));
 	quickSortRandom(arr, 0, numNums-1);
 
 	outFile << "After Sorting:" << endl;
