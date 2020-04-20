@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -12,6 +13,9 @@ void swap (int arr[], int x, int y)
 
 int parition(int arr[], int left, int right)
 {
+	int random = rand() % (right - left + 1) + left;
+	swap(arr, random, right);
+
 	int pivot = arr[right];
 	int low = left-1;
 
