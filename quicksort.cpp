@@ -15,7 +15,7 @@ int parition(int arr[], int left, int right)
 	int pivot = arr[right];
 	int low = left-1;
 
-	for (int j=left; j<high; j++)
+	for (int j=left; j<right; j++)
 	{
 		if (arr[j] < pivot)
 		{
@@ -33,7 +33,7 @@ void quickSort(int arr[], int left, int right)
 	{
 		int part = parition(arr, left, right);
 		quickSort(arr, left, part-1);
-		quickSort(part+1, right);
+		quickSort(arr, part+1, right);
 	}
 }
 
