@@ -29,17 +29,17 @@ clean:
 	rm -rf $(PROG4)
 	rm -rf *.o
 run: all
-	./$(PROG1) input.txt output.txt
-	./$(PROG2) input.txt output.txt
-	./$(PROG3) input.txt output.txt
-	./$(PROG4) input.txt output.txt
+	./$(PROG1) input.txt output1.txt
+	./$(PROG2) input.txt output2.txt
+	./$(PROG3) input.txt output3.txt
+	./$(PROG4) input.txt output4.txt
 run1: $(PROG1)
-	./$(PROG1) input.txt output.txt
+	./$(PROG1) input.txt output1.txt
 run2: $(PROG2)
-	./$(PROG2) input.txt output.txt
+	./$(PROG2) input.txt output2.txt
 run3: $(PROG3)
-	./$(PROG3) input.txt output.txt
+	./$(PROG3) input.txt output3.txt
 run4: $(PROG4)
-	./$(PROG4) input.txt output.txt
+	./$(PROG4) input.txt output4.txt
 memcheck: all
 	valgrind -v --leak-check=full ./$(PROG1)
