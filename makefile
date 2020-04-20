@@ -33,5 +33,13 @@ run: all
 	./$(PROG2) input.txt output.txt
 	./$(PROG3) input.txt output.txt
 	./$(PROG4) input.txt output.txt
+run1: $(PROG1)
+	./$(PROG1) input.txt output.txt
+run2: $(PROG2)
+	./$(PROG2) input.txt output.txt
+run3: $(PROG3)
+	./$(PROG3) input.txt output.txt
+run4: $(PROG4)
+	./$(PROG4) input.txt output.txt
 memcheck: all
 	valgrind -v --leak-check=full ./$(PROG1)
