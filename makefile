@@ -16,10 +16,10 @@ $(PROG2).o: $(PROG2).cpp
 	g++ $(FLAGS) -c $(PROG2).cpp -o $(PROG2).o
 $(PROG3): $(PROG3).o
 	g++ $(FLAGS) $(PROG3).o -o $(PROG3)
-$(PROG1).o: $(PROG1).cpp
+$(PROG3).o: $(PROG3).cpp
 	g++ $(FLAGS) -c $(PROG3).cpp -o $(PROG3).o
-$(PROG1): $(PROG1).o
-	g++ $(FLAGS) $(PROG1).o -o $(PROG1)
+$(PROG4): $(PROG4).o
+	g++ $(FLAGS) $(PROG4).o -o $(PROG4)
 $(PROG4).o: $(PROG4).cpp
 	g++ $(FLAGS) -c $(PROG4).cpp -o $(PROG4).o
 clean:
