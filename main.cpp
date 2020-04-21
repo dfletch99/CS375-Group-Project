@@ -17,7 +17,7 @@ const int MAXIMUM_VALUE = 100;
 
 //choose which type of sort to test
 enum sortType{INSERTION = 0, QUICK, QUICKRANDOM, MERGE};
-sortType whichSort = MERGE;
+sortType whichSort = INSERTION;
 
 //print out verbose calculations?
 bool verbose = false;

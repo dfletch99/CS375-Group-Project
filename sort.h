@@ -20,13 +20,13 @@ class Sorter{
 void Sorter::insertionSort(int array[]){
     int toSort;
     int temp;
-    for(int i = 1; i < sizeof(array); i++){
+    for(int i = 1; i < ARRAY_LENGTH; i++){
       toSort = array[i];
       temp = i-1;
 
-      while(temp >= 0 && array[j] > toSort){
+      while(temp >= 0 && array[temp] > toSort){
         array[temp+1] = array[temp];
-        temp--
+        temp--;
       }
     }
 }
@@ -50,7 +50,6 @@ void Sorter::mergeSortHelper(int array[], int leftIndex, int rightIndex){
 	}
 }
 
-/* ~~~~~~BROKEN~~~~~~ */
 void Sorter::merge(int array[], int leftIndex, int middleIndex, int rightIndex){
 	int firstArrayLength = middleIndex - leftIndex + 1;
 	int secondArrayLength = rightIndex - middleIndex;
