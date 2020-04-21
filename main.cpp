@@ -1,6 +1,7 @@
 #include "sort.h"
 #include <time.h>
 #include <string>
+#include <random>
 
 using namespace std;
 
@@ -8,7 +9,11 @@ using namespace std;
 extern const int ARRAY_LENGTH;
 
 //total number of iterations for testing
-const int NUMBER_OF_LOOPS = 100000;
+const int NUMBER_OF_LOOPS = 10000;
+
+//define minimum and maximum values for random number generation
+const int MINIMUM_VALUE = -100;
+const int MAXIMUM_VALUE = 100;
 
 //choose which type of sort to test
 enum sortType{INSERTION = 0, QUICK, QUICKRANDOM, MERGE};
@@ -18,11 +23,14 @@ sortType whichSort = MERGE;
 bool verbose = false;
 
 
-//fill the array with random values using srand, seeded with the time() function
+//fill the array with random values using uniform integer distribution RNG
 void fillArray(int array[]){
-	srand(time(NULL));
+	random_device rd;
+	mt19937 eng(rd());
+	uniform_int_distribution<> distr(MINIMUM_VALUE, MAXIMUM_VALUE);
+
 	for(int i = 0; i < ARRAY_LENGTH; i++){
-		array[i] = rand() % 100;
+		array[i] = distr(eng);
 	}
 }
 
@@ -75,6 +83,10 @@ int main(){
 		}
 		else{
 			cout << "Iteration " << i << ": " << (isSorted(array) ? "SORTED":"NOT SORTED\n") << endl;
+		}
+		if(!isSorted(array)){
+			cout << "error! sort failed" << endl;
+			return -1;
 		}
 	}
 }
