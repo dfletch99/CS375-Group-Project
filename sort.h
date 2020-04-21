@@ -12,7 +12,9 @@ class Sorter{
 		int array[ARRAY_LENGTH];
 		void insertionSort(int[]);
 		void mergeSort(int[]);
-		void quickSort(int[], bool);
+		void swap(int[], int, int);
+		int parition(int[], int, int, int)
+		void quickSort(int[], int, int, int);
 		void mergeSortHelper(int[], int, int);
 		void merge(int[], int, int, int);
 };
@@ -20,13 +22,13 @@ class Sorter{
 void Sorter::insertionSort(int array[]){
     int toSort;
     int temp;
-    for(int i = 1; i < ARRAY_LENGTH; i++){
+    for(int i = 1; i < sizeof(array); i++){
       toSort = array[i];
       temp = i-1;
 
-      while(temp >= 0 && array[temp] > toSort){
+      while(temp >= 0 && array[j] > toSort){
         array[temp+1] = array[temp];
-        temp--;
+        temp--
       }
     }
 }
@@ -36,8 +38,44 @@ void Sorter::mergeSort(int array[]){
 	mergeSortHelper(array, 0, ARRAY_LENGTH - 1);
 }
 
-void Sorter::quickSort(int array[], bool random){
-	//TODO: do
+void Sorter::swap(int arr[], int x, int y)
+{
+	int temp = arr[x];
+	arr[x] = arr[y];
+	arr[y] = temp;
+}
+
+int Sorter::parition(int arr[], int left, int right, int rand)
+{
+	if (rand == 1)
+	{
+		int random = rand() % (right - left + 1) + left;
+		swap(arr, random, right);
+	}
+
+	int pivot = arr[right];
+	int low = left-1;
+
+	for (int j=left; j<right; j++)
+	{
+		if (arr[j] < pivot)
+		{
+			low++;
+			swap(arr, low, j);
+		}
+	}
+	swap(arr, low+1, right);
+	return low+1;
+}
+
+void Sorter::quickSort(int arr[], int left, int right, int rand)
+{
+	if (left < right)
+	{
+		int part = parition(arr, left, right, rand);
+		quickSort(arr, left, part-1);
+		quickSort(arr, part+1, right);
+	}
 }
 
 void Sorter::mergeSortHelper(int array[], int leftIndex, int rightIndex){
@@ -50,6 +88,7 @@ void Sorter::mergeSortHelper(int array[], int leftIndex, int rightIndex){
 	}
 }
 
+/* ~~~~~~BROKEN~~~~~~ */
 void Sorter::merge(int array[], int leftIndex, int middleIndex, int rightIndex){
 	int firstArrayLength = middleIndex - leftIndex + 1;
 	int secondArrayLength = rightIndex - middleIndex;
