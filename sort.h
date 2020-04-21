@@ -1,8 +1,11 @@
 #ifndef SORT_H
 #define SORT_H
 #include <iostream>
+#include <algorithm>
 
 const int ARRAY_LENGTH = 10;
+
+using namespace std;
 
 class Sorter{
 	public:
@@ -50,11 +53,25 @@ void Sorter::merge(int array[], int leftIndex, int middleIndex, int rightIndex){
 	for(int i = 0; i < secondArrayLength; i++){
 		secondArray[i] = array[middleIndex + 1 + i];
 	}
+	/*	//PRINT STATEMENT DEBUGGING
+	cout << "Left and Right:" << endl;
+	cout << "[";
+	for(int i = 0; i < firstArrayLength; i++){
+		cout << firstArray[i] << ", ";
+	}
+	cout << "]" << endl;
+
+	cout << "[";
+	for(int i = 0; i < secondArrayLength; i++){
+		cout << secondArray[i] << ", ";
+	}
+	cout << "]" << endl;
+	*/
 
 	//the actual merge
 	int firstIndex = 0;
 	int secondIndex = 0;
-	int mergedIndex = 1;
+	int mergedIndex = leftIndex;
 	while(firstIndex < firstArrayLength && secondIndex < secondArrayLength){
 		if(firstArray[firstIndex] <= secondArray[secondIndex]){
 			array[mergedIndex] = firstArray[firstIndex];
@@ -80,5 +97,14 @@ void Sorter::merge(int array[], int leftIndex, int middleIndex, int rightIndex){
 		secondIndex++;
 		mergedIndex++;
 	}
+
+	/*	//PRINT STATEMENT DEBUGGING
+	cout << "merged array:" << endl;
+	cout << "[";
+	for(int i = 0; i < ARRAY_LENGTH; i++){
+		cout << array[i] << ", ";
+	}
+	cout << "]\n" << endl;
+	*/
 }
 #endif
