@@ -18,8 +18,19 @@ class Sorter{
 };
 
 void Sorter::insertionSort(int array[]){
-	//TODO: do
+    int toSort;
+    int temp;
+    for(int i = 1; i < sizeof(array); i++){
+      toSort = array[i];
+      temp = i-1;
+
+      while(temp >= 0 && array[j] > toSort){
+        array[temp+1] = array[temp];
+        temp--
+      }
+    }
 }
+
 
 void Sorter::mergeSort(int array[]){
 	mergeSortHelper(array, 0, ARRAY_LENGTH - 1);
