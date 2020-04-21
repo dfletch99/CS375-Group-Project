@@ -3,10 +3,18 @@
 #include <string>
 
 using namespace std;
+
+//imported from sort.h
 extern const int ARRAY_LENGTH;
+
+//total number of iterations for testing
 const int NUMBER_OF_LOOPS = 100000;
+
+//choose which type of sort to test
 enum sortType{INSERTION = 0, QUICK, QUICKRANDOM, MERGE};
 sortType whichSort = MERGE;
+
+//print out verbose calculations?
 bool verbose = false;
 
 
