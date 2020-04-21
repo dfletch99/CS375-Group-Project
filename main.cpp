@@ -9,7 +9,7 @@ using namespace std;
 extern const int ARRAY_LENGTH;
 
 //total number of iterations for testing
-const int NUMBER_OF_LOOPS = 10000;
+const int NUMBER_OF_LOOPS = 1000;
 
 //define minimum and maximum values for random number generation
 const int MINIMUM_VALUE = -100;
@@ -17,10 +17,10 @@ const int MAXIMUM_VALUE = 100;
 
 //choose which type of sort to test
 enum sortType{INSERTION = 0, QUICK, QUICKRANDOM, MERGE};
-sortType whichSort = INSERTION;
+sortType whichSort = QUICKRANDOM;
 
 //print out verbose calculations?
-bool verbose = false;
+int verbose = 0;
 
 
 //fill the array with random values using uniform integer distribution RNG
@@ -59,10 +59,10 @@ int main(){
 				s.insertionSort(array);
 				break;
 			case 1:
-				s.quickSort(array, false);
+				s.quickSort(array, 0, ARRAY_LENGTH-1, false);
 				break;
 			case 2:
-				s.quickSort(array, true);
+				s.quickSort(array, 0, ARRAY_LENGTH-1, false);
 				break;
 			case 3:
 				s.mergeSort(array);
