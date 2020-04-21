@@ -44,6 +44,7 @@ bool isSorted(int array[]){
 int main(){
 	int array[ARRAY_LENGTH];
 	Sorter s;
+	srand(time(NULL));
 	for(int i = 0; i < NUMBER_OF_LOOPS; i++){
 		fillArray(array);
 		if(verbose){
