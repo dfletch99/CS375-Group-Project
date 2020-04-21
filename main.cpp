@@ -59,10 +59,10 @@ int main(){
 				s.insertionSort(array);
 				break;
 			case 1:
-				s.quickSort(array, 0, ARRAY_LENGTH-1, false);
+				s.quickSort(array, 0, ARRAY_LENGTH-1, 0);
 				break;
 			case 2:
-				s.quickSort(array, 0, ARRAY_LENGTH-1, false);
+				s.quickSort(array, 0, ARRAY_LENGTH-1, 1);
 				break;
 			case 3:
 				s.mergeSort(array);
