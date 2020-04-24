@@ -6,13 +6,12 @@
 #include <fstream>
 
 using namespace std;
-
-//100, 600, 1100, 1600,  
-int ARRAY_LENGTH = 3600;
+ 
+int ARRAY_LENGTH = 5600;
 
 //total number of iterations for testing
 //number of loops for one batch of tests
-const int NUMBER_OF_LOOPS = 1000;
+const int NUMBER_OF_LOOPS = 50;
 //do these tests all the way up to this length of array
 const int MAX_ARRAY_LENGTH = 10000;
 //incrememnt array size by this value
@@ -24,7 +23,7 @@ const int MAXIMUM_VALUE = 100;
 
 //choose which type of sort to test
 enum sortType{INSERTION = 0, QUICK, QUICKRANDOM, MERGE};
-sortType whichSort = INSERTION;
+sortType whichSort = QUICK;
 
 //print out each time calculation to console?
 bool logEach = false;
@@ -35,7 +34,7 @@ bool verbose = false;
 bool timer = true;
 
 //fill array with random values, or sorted values?
-bool fillRandom = true;
+bool fillRandom = false;
 
 
 //fill the array with random values using uniform integer distribution RNG
@@ -63,7 +62,7 @@ int main(){
 	auto entireProgramStart = chrono::steady_clock::now();
 
 	ofstream outfile;
-	outfile.open("data_output_insertion.txt", ios::app);
+	outfile.open("sorted_already_data_output_quick.txt", ios::app);
 	outfile << "NUMBER OF LOOPS PER BATCH: " << NUMBER_OF_LOOPS << "\n" << endl;
 
 	
