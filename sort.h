@@ -3,13 +3,15 @@
 #include <iostream>
 #include <algorithm>
 
-const int ARRAY_LENGTH = 10;
+
 
 using namespace std;
 
 class Sorter{
 	public:
-		int array[ARRAY_LENGTH];
+		int ARRAY_LENGTH;
+
+		Sorter(int);
 		void insertionSort(int[]);
 		void mergeSort(int[]);
 		void swap(int[], int, int);
@@ -18,6 +20,10 @@ class Sorter{
 		void mergeSortHelper(int[], int, int);
 		void merge(int[], int, int, int);
 };
+
+Sorter::Sorter(int length){
+	ARRAY_LENGTH = length;
+}
 
 void Sorter::insertionSort(int array[]){
     int toSort;
