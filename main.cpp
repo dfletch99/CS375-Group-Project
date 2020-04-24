@@ -7,11 +7,11 @@
 
 using namespace std;
  
-int ARRAY_LENGTH = 5600;
+int ARRAY_LENGTH = 100;
 
 //total number of iterations for testing
 //number of loops for one batch of tests
-const int NUMBER_OF_LOOPS = 50;
+const int NUMBER_OF_LOOPS = 500;
 //do these tests all the way up to this length of array
 const int MAX_ARRAY_LENGTH = 10000;
 //incrememnt array size by this value
@@ -23,7 +23,7 @@ const int MAXIMUM_VALUE = 100;
 
 //choose which type of sort to test
 enum sortType{INSERTION = 0, QUICK, QUICKRANDOM, MERGE};
-sortType whichSort = QUICK;
+sortType whichSort = QUICKRANDOM;
 
 //print out each time calculation to console?
 bool logEach = false;
@@ -62,7 +62,7 @@ int main(){
 	auto entireProgramStart = chrono::steady_clock::now();
 
 	ofstream outfile;
-	outfile.open("sorted_already_data_output_quick.txt", ios::app);
+	outfile.open("sorted_already_data_output_quick_random.txt", ios::app);
 	outfile << "NUMBER OF LOOPS PER BATCH: " << NUMBER_OF_LOOPS << "\n" << endl;
 
 	
