@@ -7,13 +7,16 @@
 
 using namespace std;
 
-int ARRAY_LENGTH = 5;
+//100, 600, 1100, 1600,  
+int ARRAY_LENGTH = 3600;
 
 //total number of iterations for testing
 //number of loops for one batch of tests
-const int NUMBER_OF_LOOPS = 250;
+const int NUMBER_OF_LOOPS = 1000;
 //do these tests all the way up to this length of array
 const int MAX_ARRAY_LENGTH = 10000;
+//incrememnt array size by this value
+const int SIZE_INCREMENT = 500;
 
 //define minimum and maximum values for random number generation
 const int MINIMUM_VALUE = -100;
@@ -21,7 +24,7 @@ const int MAXIMUM_VALUE = 100;
 
 //choose which type of sort to test
 enum sortType{INSERTION = 0, QUICK, QUICKRANDOM, MERGE};
-sortType whichSort = QUICK;
+sortType whichSort = INSERTION;
 
 //print out each time calculation to console?
 bool logEach = false;
@@ -32,7 +35,7 @@ bool verbose = false;
 bool timer = true;
 
 //fill array with random values, or sorted values?
-bool fillRandom = false;
+bool fillRandom = true;
 
 
 //fill the array with random values using uniform integer distribution RNG
@@ -60,7 +63,7 @@ int main(){
 	auto entireProgramStart = chrono::steady_clock::now();
 
 	ofstream outfile;
-	outfile.open("sorted_already_data_output_quick.txt", ios::app);
+	outfile.open("data_output_insertion.txt", ios::app);
 	outfile << "NUMBER OF LOOPS PER BATCH: " << NUMBER_OF_LOOPS << "\n" << endl;
 
 	
@@ -125,12 +128,14 @@ int main(){
 			}
 			
 			//check if the array is actually sorted (**DO NOT USE DURING DATA COLLECTION**)
-			/*
+			
+			
 			if(!isSorted(array)){
 				cout << "error! sort failed" << endl;
 				return -1;
 			}
-			*/
+			
+			
 
 			chrono::duration<double> elapsedTimeSingle = end - start;
 			elapsedTimeTotal += elapsedTimeSingle;
@@ -142,7 +147,7 @@ int main(){
 		}
 		cout << "TOTAL TIME TAKEN FOR LENGTH " << ARRAY_LENGTH << ": " << elapsedTimeTotal.count() << "\nAVERAGE TIME: " << (elapsedTimeTotal.count()) / NUMBER_OF_LOOPS << endl;
 		outfile << ARRAY_LENGTH << " " << (elapsedTimeTotal.count()) / NUMBER_OF_LOOPS << endl;
-		ARRAY_LENGTH++;
+		ARRAY_LENGTH += SIZE_INCREMENT;
 	}
 	
 	
