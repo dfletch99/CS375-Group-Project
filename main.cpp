@@ -11,7 +11,7 @@ int ARRAY_LENGTH = 100;
 
 //total number of iterations for testing
 //number of loops for one batch of tests
-const int NUMBER_OF_LOOPS = 100;
+const int NUMBER_OF_LOOPS = 500;
 //do these tests all the way up to this length of array
 const int MAX_ARRAY_LENGTH = 10000;
 //incrememnt array size by this value
@@ -23,7 +23,7 @@ const int MAXIMUM_VALUE = 100;
 
 //choose which type of sort to test
 enum sortType{INSERTION = 0, QUICK, QUICKRANDOM, MERGE};
-sortType whichSort = QUICKRANDOM;
+sortType whichSort = MERGE;
 
 //print out each time calculation to console?
 bool logEach = false;
@@ -34,7 +34,7 @@ bool verbose = false;
 bool timer = true;
 
 //fill array with random values, or sorted values?
-bool fillRandom = false;
+bool fillRandom = true;
 
 
 //fill the array with random values using uniform integer distribution RNG
@@ -62,7 +62,7 @@ int main(){
 	auto entireProgramStart = chrono::steady_clock::now();
 
 	ofstream outfile;
-	outfile.open("sorted_already_data_output_quick_random.txt", ios::app);
+	outfile.open("sorted_already_data_output_merge.txt", ios::app);
 	outfile << "NUMBER OF LOOPS PER BATCH: " << NUMBER_OF_LOOPS << "\n" << endl;
 
 	
