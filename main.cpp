@@ -11,7 +11,7 @@ int ARRAY_LENGTH = 100;
 
 //total number of iterations for testing
 //number of loops for one batch of tests
-const int NUMBER_OF_LOOPS = 500;
+const int NUMBER_OF_LOOPS = 100;
 //do these tests all the way up to this length of array
 const int MAX_ARRAY_LENGTH = 10000;
 //incrememnt array size by this value
@@ -34,7 +34,7 @@ bool verbose = false;
 bool timer = true;
 
 //fill array with random values, or sorted values?
-bool fillRandom = true;
+bool fillRandom = false;
 
 
 //fill the array with random values using uniform integer distribution RNG
