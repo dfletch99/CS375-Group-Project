@@ -36,6 +36,7 @@ void Sorter::insertionSort(int array[]){
         array[temp+1] = array[temp];
         temp--;
       }
+      array[temp+1] = toSort;
     }
 }
 
