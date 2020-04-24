@@ -34,7 +34,7 @@ bool verbose = false;
 bool timer = true;
 
 //fill array with random values, or sorted values?
-bool fillRandom = false;
+bool fillRandom = true;
 
 
 //fill the array with random values using uniform integer distribution RNG
