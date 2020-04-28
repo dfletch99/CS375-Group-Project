@@ -45,23 +45,32 @@ void Sorter::mergeSort(int array[]){
 	mergeSortHelper(array, 0, ARRAY_LENGTH - 1);
 }
 
+//takes two values in an array and switches their locations with each other
+//arr[] is an array of ints
+//x is the index of one value to be changed
+//y is the index of the other value to be changed
 void Sorter::swap(int arr[], int x, int y)
 {
-	int temp = arr[x];
+	int temp = arr[x]; //temp holds the value at index x that will be moved to index y
 	arr[x] = arr[y];
 	arr[y] = temp;
 }
 
+//the helper function to quicksort that takes a pivot and places it in the correct spot in the array and makes everything to the left less than the pivot and everything to the right greater than or equal to the pivot
+//arr[] is an array of ints to be sorted
+//left is index of the leftmost value in the array to be worked on
+//right is the index of the rightmost value in the array to be worked on
+//isRandom is either 0 or 1 depending if the random version of quicksort is wanted or not 
 int Sorter::parition(int arr[], int left, int right, int isRandom)
 {
-	if (isRandom == 1)
+	if (isRandom == 1) //if random version do this
 	{
-		int random = rand() % (right - left + 1) + left;
+		int random = rand() % (right - left + 1) + left; //random value such that left<=random<=right to serve as the pivot
 		swap(arr, random, right);
 	}
 
-	int pivot = arr[right];
-	int low = left-1;
+	int pivot = arr[right]; //value of the pivot which is comapred to 
+	int low = left-1; //the boundry between items less than the pivot and greater than or equal to the pivot
 
 	for (int j=left; j<right; j++)
 	{
@@ -75,13 +84,18 @@ int Sorter::parition(int arr[], int left, int right, int isRandom)
 	return low+1;
 }
 
+//the quickSort algorithm both random version and non random
+//arr[] is an array of ints to be sorted
+//left is index of the leftmost value in the array to be worked on
+//right is the index of the rightmost value in the array to be worked on
+//isRandom is either 0 or 1 depending if the random version of quicksort is wanted or not 
 void Sorter::quickSort(int arr[], int left, int right, int isRandom)
 {
 	if (left < right)
 	{
-		int part = parition(arr, left, right, isRandom);
-		quickSort(arr, left, part-1, isRandom);
-		quickSort(arr, part+1, right, isRandom);
+		int part = parition(arr, left, right, isRandom); //the index where the sorted value is...everything left is less than everything right is greater or equal
+		quickSort(arr, left, part-1, isRandom); //recursive call on left part
+		quickSort(arr, part+1, right, isRandom); //recursive call on right part
 	}
 }
 
