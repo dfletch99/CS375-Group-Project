@@ -40,7 +40,7 @@ void Sorter::insertionSort(int array[]){
     }
 }
 
-
+//dummy function to call the actual merge sort from the user program
 void Sorter::mergeSort(int array[]){
 	mergeSortHelper(array, 0, ARRAY_LENGTH - 1);
 }
@@ -99,31 +99,41 @@ void Sorter::quickSort(int arr[], int left, int right, int isRandom)
 	}
 }
 
+//recursive function call for merge sort. Recursively calls itself on the left and right half of the array
+//array[] is the array of ints to be sorted
+//leftIndex is the index of the leftmost value in the array being manipulated by the algorithm
+//rightIndex is the index of the rightmost value in the array being manipulated by the algorithm
 void Sorter::mergeSortHelper(int array[], int leftIndex, int rightIndex){
 	if(leftIndex < rightIndex){
-		int middleIndex = (leftIndex+rightIndex)/2;
-		mergeSortHelper(array, leftIndex, middleIndex);
-		mergeSortHelper(array, middleIndex + 1, rightIndex);
+		int middleIndex = (leftIndex+rightIndex)/2;    		//calculate middle index (average of the left and right indeces)
+		mergeSortHelper(array, leftIndex, middleIndex);		//recursive call the left half
+		mergeSortHelper(array, middleIndex + 1, rightIndex);	//recursive call the right half
 		
-		merge(array, leftIndex, middleIndex, rightIndex);
+		merge(array, leftIndex, middleIndex, rightIndex);	//merge the two together
 	}
 }
 
-/* ~~~~~~BROKEN~~~~~~ */
+//merges two sorted subarrays together
+//array[] is the same array to be sorted as before
+//leftIndex and rightIndex are the same parameters from mergeSortHelper()
+//middleIndex is the same value calculated in mergeSortHelper()
 void Sorter::merge(int array[], int leftIndex, int middleIndex, int rightIndex){
+	//these are the lengths of the two auxiliary subarrays. Not necessary, but now we don't have to keep calculating sizeof(left/rightArray) / sizeof(left/rightArray[0])
 	int firstArrayLength = middleIndex - leftIndex + 1;
 	int secondArrayLength = rightIndex - middleIndex;
 
+	//declare the actual arrays
 	int firstArray[firstArrayLength], secondArray[secondArrayLength];
 	
-	//copy data of separate arrays
+	//copy data from original array into the two sub arrays. Each array will be individually sorted by definition
 	for(int i = 0; i < firstArrayLength; i++){
 		firstArray[i] = array[leftIndex+i];
 	}
 	for(int i = 0; i < secondArrayLength; i++){
 		secondArray[i] = array[middleIndex + 1 + i];
 	}
-	/*	//PRINT STATEMENT DEBUGGING
+
+	/*	PRINT STATEMENT DEBUGGING
 	cout << "Left and Right:" << endl;
 	cout << "[";
 	for(int i = 0; i < firstArrayLength; i++){
@@ -136,25 +146,27 @@ void Sorter::merge(int array[], int leftIndex, int middleIndex, int rightIndex){
 		cout << secondArray[i] << ", ";
 	}
 	cout << "]" << endl;
-	*/
+		PRINT STATEMENT DEBUGGING*/
 
 	//the actual merge
-	int firstIndex = 0;
-	int secondIndex = 0;
-	int mergedIndex = leftIndex;
+	int firstIndex = 0;		//index tracker for first subarray
+	int secondIndex = 0;		//index tracker for second subarray
+	int mergedIndex = leftIndex;	//index tracker for original array
+
+	//iteratively add the lowest value from each array back into the original array
 	while(firstIndex < firstArrayLength && secondIndex < secondArrayLength){
-		if(firstArray[firstIndex] <= secondArray[secondIndex]){
+		if(firstArray[firstIndex] <= secondArray[secondIndex]){		//first array value is smaller
 			array[mergedIndex] = firstArray[firstIndex];
 			firstIndex++;
 		}
 		else{
-			array[mergedIndex] = secondArray[secondIndex];
+			array[mergedIndex] = secondArray[secondIndex];		//second array value is smaller
 			secondIndex++;
 		}
 		mergedIndex++;
 	}
 
-	//at this point, there are remaining elements to be merged in ONLY one of the subarrays. fill the rest of the main array with those values.
+	//at this point, there are remaining elements to be merged in ONLY one of the subarrays. fill the rest of the main array with those values. No comparisons needed
 
 	while(firstIndex < firstArrayLength){
 		array[mergedIndex] = firstArray[firstIndex];
