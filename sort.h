@@ -26,16 +26,22 @@ Sorter::Sorter(int length){
 }
 
 void Sorter::insertionSort(int array[]){
+    //variables to stort value at position that will be sorted and indexes that will be manipulated
     int toSort;
     int temp;
+   
+    //loop through array starting from position 1
     for(int i = 1; i < ARRAY_LENGTH; i++){
+      //save value at index and start temp at one below the current index
       toSort = array[i];
       temp = i-1;
 
+      //while previous values are larger than your current value swap their indexes (values will always be greater than current key sequentially)
       while(temp >= 0 && array[temp] > toSort){
         array[temp+1] = array[temp];
         temp--;
       }
+      //set index to key 
       array[temp+1] = toSort;
     }
 }
