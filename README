@@ -1,0 +1,14 @@
+To compile: type "make"
+To run: type "make run"
+Note ~ altering the number of arrays generated and the sorting algorithm used requires altering globally defined variables in main.cpp
+
+Data Structures used: arrays are used to store sorted and unsorted input/output
+
+Time Complexity.
+Insertion sort: Upper bounded by n^2. This is the worst case when the array is sorted in the opposite order desired. Lower bounded by n. This is the best case when the array is already sorted.
+Mergesort: Always O(nlog(n))
+Quicksort: Worst case is n^2 (if the array is already sorted). Best case is nlog(n) when the partition is chosen at the half way point every time.
+Randomized Quicksort: Identical to Quicksort but better for real world use because it avoids the "fully sorted problem" and input in the real world is often semi-sorted.
+
+There is one class, "Sorter", in sort.h. The class defines each of our sorting algorithms and is shared with main.cpp.
+main.cpp runs one algorithm (hardcoded by user) on a user defined number of sorted and randomly generated number of arrays.
