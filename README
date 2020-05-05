@@ -1,8 +1,16 @@
 To compile: type "make"
 To run: type "make run"
-Note ~ altering the number of arrays generated and the sorting algorithm used requires altering globally defined variables in main.cpp
+Note ~ altering the number of arrays generated and the sorting algorithm used requires altering globally defined variables in main.cpp. The code is well-documented, and each global variable is
+described in detail.
 
-Data Structures used: arrays are used to store sorted and unsorted input/output
+Data Structures used:
+arrays are used to store sorted and unsorted input/output.
+
+Quicksort and Insertion sort are in-place, meaning they only need to manipulate the original array to reach the optimal solution. Mergesort cannot do this, and must create extra space in memory to
+perform the sort correctly.
+
+Random number generation is used in two scenarios: to calculate a random pivot for randomquicksort and to fill the test arrays with random values. Quicksort uses the rand() function, setting a new seed each time the code is run with srand(time(NULL)). For filling the array, a more complex approach is used because rand() tends to distribute random values in a way that is not uniform. To
+ensure the tests are more fair in terms of comparison of performance, a different method for uniform integer distribution was used.
 
 Time Complexity.
 Insertion sort: Upper bounded by n^2. This is the worst case when the array is sorted in the opposite order desired. Lower bounded by n. This is the best case when the array is already sorted.
